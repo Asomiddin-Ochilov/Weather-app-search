@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import React,{useState,useEffect} from 'react';
 import './App.css';
-
+import {Container} from "./styled/styled";
+import Header from "./components/header/header";
 function App() {
+  const [state,setState] = useState('');
+  const [weather,setWeather] = useState('');
+  const [search,setSearch] = useState('toshkent');
+  const [img,setImg] = useState('');
+
+  useEffect(()=>{
+    const date = new Date().getDate() + "." + (new Date().getMonth()+1) + "." + new Date().getFullYear();
+    setState(date)
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<Container img={img}>
+<Header state={state} setState={setState}
+setWeather={setWeather} weather={weather}
+setSearch={setSearch} search={search}
+setImg={setImg} img={img}/>
+</Container>
   );
 }
 
